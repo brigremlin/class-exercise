@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 style="text-align: center">MY PROFILE</h1>
+  <button class="btn" [ngClass]="{'btn-danger': showForm, 'btn-success': !showForm }" (click)="showForm = !showForm">{{ showForm ? 'Cancel' : 'Add Post'}}</button>
+  <form *ngIf="showForm" class="new-post-form" (ngSubmit)="onSubmit()" >
+    <div class="mb-3">
+      <label for="content" class="form-label">What do you want to say?</label>
+      <textarea class="form-control" [(ngModel)]="content" [ngModelOptions]="{standalone: true}"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+  </form>
+  <p *ngIf="!posts">You don't have any posts to show!</p>
+  <app-post-list [posts]="posts" [canDelete]="true"></app-post-list>
+</div>

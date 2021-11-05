@@ -1,0 +1,7 @@
+<ul *ngIf="posts" class="list-group">
+  <div class="list-group-item post" *ngFor="let post of posts">
+    <h4>{{ post.author }}</h4>
+    <p>{{ post.content }}</p>
+    <div *ngIf="canDelete" (click)="onDelete(post.id)" class="del-btn">&times;</div>
+  </div>
+</ul>
